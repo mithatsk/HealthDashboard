@@ -1,0 +1,39 @@
+CREATE TABLE Persons (
+    userid int AUTO_INCREMENT NOT NULL,
+    username varchar(255) NOT NULL,
+    password varchar(255) NOT NULL,
+    admin boolean DEFAULT 0,
+    PRIMARY KEY (userid)
+);
+
+
+CREATE TABLE Sleep (
+    userid int NOT NULL,
+	date date ,
+    sleeping_hours int ,
+    naps int ,
+ 	getup time ,
+    FOREIGN KEY (userid) REFERENCES Persons(userid),
+    CONSTRAINT PK_Sleep PRIMARY KEY (userid,date)
+);
+
+CREATE TABLE Run (
+    userid int NOT NULL,
+	date date ,
+    steps int ,
+    walked_distance int ,
+ 	energy int ,
+    FOREIGN KEY (userid) REFERENCES Persons(userid),
+    CONSTRAINT PK_Person PRIMARY KEY (userid,date)
+);
+
+CREATE TABLE Temperature (
+    userid int NOT NULL,
+	date datetime ,
+  	out_temp int ,
+    in_temp int ,
+    FOREIGN KEY (userid) REFERENCES Persons(userid),
+    CONSTRAINT PK_Person PRIMARY KEY (userid,date)
+);
+
+
